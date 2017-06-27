@@ -1,0 +1,21 @@
+		// push在数组 最后添加项
+		var arr = ["东","西","南","北"];
+		arr.push("中","发","白");		
+		console.log(arr);  // ["东", "西", "南", "北", "中", "发", "白"]
+		
+		//pop删除数组的最后一项
+		 var arr = ["东","西","南","北"];
+		var last = arr.pop();	
+		console.log(arr);      // ["东", "西", "南"]
+		console.log(last);		//北
+
+		//unshift在数组 开头插入项
+		var arr = ["东","西","南","北"];
+		arr.unshift("一万","八万","九万");
+		console.log(arr);   // ["一万", "八万", "九万", "东", "西", "南", "北"]
+
+		//shift删除数组开头项
+		var arr = ["东","西","南","北"];
+		var first = arr.shift();
+		console.log(arr);   // ["西", "南", "北"]
+		console.log(first); // 东
