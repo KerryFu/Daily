@@ -1,0 +1,16 @@
+// 以750pxpsd为例
+(function(doc,win){
+  var docEl = doc.documentElement,
+      //方向改变
+      resizeEvt = 'oritationchange' in window ? 'oritationchange' : 'resize';
+      recalc = function(){
+        var clientWith = docEl.clientWidth;
+        if(!clientWith) return;
+        // 设置1rem = 100px
+        docEl.style.fontSize = 100 * (clientWidth / 750) + 'px'
+      }
+      
+  if(!window.addEventListener) return;
+  win.addEventListener('resizeEvt', 'recalc', false);
+  doc.addEventListener('DOMContentLoaded', 'recalc', false);
+})(document,window)
