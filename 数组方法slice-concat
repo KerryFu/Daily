@@ -1,0 +1,26 @@
+		//concat
+    var arr1 = ["东","西","南","北"];
+		var arr2 = ["一条","二条"];
+    // concat接收多个参数
+		arr = arr1.concat(arr2,["一筒","八条"],"幺鸡");
+    
+		console.log(arr); // ["东", "西", "南", "北", "一条", "二条", "一筒", "八条", "幺鸡"]
+    
+    **********************************************************
+    
+    // 截取 slice(begin,end)不包含end
+    var arr = ["东","西","南","北","中","发","白"];
+		var arr2 = arr.slice(1,4); 
+		console.log(arr2);   //["西", "南", "北"]
+    
+    // 从begin开始，到后面所有的
+    var arr3 = arr.slice(3);
+    console.log(arr3);   // ["北","中","发","白"];
+    
+    // 从倒数第2项到第4，不包括-4
+    var arr4 = arr.slice(-4,-2);
+    console.log(arr4);  // ["北", "中"]
+    
+    // 顺序错误，为[]
+    var arr2 = arr.slice(3,1);
+		console.log(arr2);   		// []
