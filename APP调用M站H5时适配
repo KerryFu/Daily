@@ -1,0 +1,30 @@
+    var compatibleApp = function(header,footer,container){
+        var search = location.search.substring(1),
+            $ = function(clas){
+                return document.getElementsByClassName(clas)[0];
+            };
+         // 在localStorage中传递source=app
+        if(localStorage.source == 'app'){
+            sFn();
+        }
+        // 通过url中传source=app,如https://m.jyall.com/goods/?city=bj&kind=jd&source=app
+        if(search)search.split("&").forEach(function(item){
+            if(item.split("=")[0] == "source" && item.split("=")[1] == "app"){
+                var source = item.split("=")[1];
+                localStorage.setItem("source", source);
+                sFn();
+            }
+        });
+        // 去掉header和footer，主容器的paddingTop/PaddingBottom为0  
+        function sFn(){
+            console.log(header);
+            if(header && $(header) != undefined)$(header).style.display = "none";
+            if(footer && $(footer) != undefined)$(footer).style.display = "none";
+            if(container && $(container) != undefined){
+                $(container).style.paddingTop = "0";
+                $(container).style.paddingBottom = "0";
+            }
+        }
+    };
+    // 给dom结构中添加相应类名，header对应chanel-header,container对应chanel-main,footer对应footer
+    compatibleApp('chanel-header','footer','chanel-main');
