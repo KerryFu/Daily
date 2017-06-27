@@ -1,0 +1,11 @@
+		var arr = [1,2,3,4,5,6,7];
+		var str = arr.join("-");
+		console.log(str); // '1-2-3-4-5-6-7'
+
+		var arr = [1,2,3,4,5,6,7];
+		var str = arr.join();
+		console.log(str);		// '1,2,3,4,5,6,7'
+
+		var arr = [,,,,,,,,,];
+		var str = arr.join("我爱你");
+		console.log(str); // 我爱你我爱你我爱你我爱你我爱你我爱你我爱你我爱你
