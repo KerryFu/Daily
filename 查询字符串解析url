@@ -1,0 +1,25 @@
+// 查询字符串方法（https://m.jyall.com/goods/?city=bj&kind=jd）
+
+function getQueryStringArgs() {
+  var qs = location.search.length > 0 ? location.search.substring(1) : '';
+  // 保存数据的对象
+  var args = {};
+  // 保存每一项
+  var items = qs.length ? qs.split('&') : [];
+  var item = null , name = null , value = null; 
+
+  for(var i = 0, len = items.length; i < len ; i++){
+    item = items[i].split('=');
+    // 转码
+    name = decodeURIComponent(item[0]);
+    value = decodeURIComponent(item[1]);
+    if (name.length) {
+      args[name] = value;
+    }
+  }
+  return args;
+}
+
+var args = getQueryStringArgs();
+console.log(args['city']);   // bj
+console.log(args['kind']);   // jd
