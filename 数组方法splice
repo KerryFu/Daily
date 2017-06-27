@@ -1,0 +1,30 @@
+// arrayObject.splice(index,howmany,item1,.....,itemX) 添加/删除项目
+/* index 开始添加或删除的位置,（包含index）
+*  howmany 要删除的项目数量。如果设置为 0，则不会删除项目
+*  item1,...itemX  向数组添加的新项目
+*/ 
+
+// demo1
+var arr = ["A","B","C","D","E","F","G"];
+arr.splice(3,2,"X","Y","Z","思密达");	// 从索引值为3开始，删除2项，然后插入"X","Y","Z","思密达"
+console.log(arr);  //["A","B","C",3,2,"X","Y","Z","思密达","F","G"];
+
+// demo2 只删除
+var arr = ["A","B","C","D","E","F","G"];
+arr.splice(2,4);    //没有值可以替换，就直接删除
+console.log(arr);   //["A", "B", "G"]
+
+// demo3 删除所有
+var arr = ["A","B","C","D","E","F","G"];
+arr.splice(2);     // index为2以后全删除
+console.log(arr)   // ["A", "B"]
+
+// demo4 只插入
+var arr = ["A","B","C","D","E","F","G"];
+arr.splice(2,0,"嘻嘻","哈哈");		//插入到下标为2的项前，0项删除
+console.log(arr);   //["A", "B", "嘻嘻", "哈哈", "C", "D", "E", "F", "G"]
+
+// demo5 
+var arr = ["A","B","C","D","E","F","G","H","I","J","K","L"];
+arr.splice(-8);		// 倒数查，无0，-8即为'E' 
+console.log(arr);  // ["A","B","C","D"]
