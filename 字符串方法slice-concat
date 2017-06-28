@@ -1,0 +1,8 @@
+var str = 'ancnajsGjDf';
+
+// concat 拼接字符串
+console.log(str.concat('ccc'))  // ancnajsGjDfccc
+
+// slice(start, end) 提取字符串的某个部分，并以新的字符串返回被提取的部分（！不包含end）
+// -1 指字符串的最后一个字符，-2 指倒数第二个字符，以此类推
+ console.log(str.slice(3,5))  // na
