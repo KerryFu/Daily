@@ -1,0 +1,7 @@
+/* 
+* substr(begin,length)提取字符串中 指定数目 的字符
+* substring(begin,end)提取字符串中 两个指定的索引号之间 的字符,（！不包含end）
+**/ 
+var str = 'ancnajsGjDf';
+console.log(str.substr(3,5))    // najsG
+console.log(str.substring(3,5)) // na
