@@ -1,0 +1,3 @@
+// split把字符串分割为字符串数组，与join相反
+var str = 'ancnajsGjDf';
+console.log(str.split('j')) // ["ancna", "sG", "Df"]
