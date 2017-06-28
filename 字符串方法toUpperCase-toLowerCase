@@ -1,0 +1,4 @@
+// 字符串转换为小写、大写
+var str = 'ancnajsGjDf';
+console.log(str.toLowerCase());  // ancnajsgjdf
+console.log(str.toUpperCase());  // ANCNAJSGJDF
