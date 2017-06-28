@@ -1,0 +1,10 @@
+/* replace(regexp/substr,replacement)
+*  子字符串或要替换的模式的 RegExp 对象
+*/ 
+var str = 'ancnajsGjDf';
+console.log(str.replace('a',1))  // 1ncnajsGjDf  （只匹配第1个）
+console.log(str.replace(/a/g,1)) // 1ncn1jsGjDf
+
+// demo2 ,$1,$2分别为第1个、第2个匹配的
+name = "Doe, John";
+name.replace(/(\w+)\s*, \s*(\w+)/, "$2 $1");  // "John Doe" 
