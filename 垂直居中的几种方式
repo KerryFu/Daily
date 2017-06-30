@@ -1,0 +1,62 @@
+对于行内元素，可以设置line-height = height
+
+块级元素
+（1）绝对定位，margin拉回自己的一半。（定宽、高尺寸）
+.main {
+  position: absolute;
+  width: 18em;
+  height: 6em;
+  top: 50%;
+  left: 50%;
+  margin-top: -3em; /* 6/2 = 3 */
+  margin-left: -9em; /* 18/2 = 9 */
+}
+
+（2）绝对定位，calc函数计算（元素定宽高）
+.main{ 
+    width:120px;
+    height:140px;
+    position:absolute;
+    left:calc(50% - 60px);    //  减去自身宽高的一半
+    top:calc(50% - 70px);
+      }
+      
+(3) css3新特性，vh、vw基于视口单位，在不用left和top的情况下
+main {
+  width: 18em;    
+  padding: 1em 1.5em;
+  margin: 50vh auto 0;   //  margin：50vh auto 0 auto;
+  transform: translateY(-50%);
+}
+ie6-8不支持，ff 19.0+，chrome26.0+，opera全部支持
+
+（4）五马分尸（必须有magin;auto  和width、height）
+.main{  
+  position:absolute;
+  top:0;
+  right:0;
+  left:0;
+  bottom:0;
+  margin:auto;
+  width:100px;     // 不给宽度，不能水平居中
+  height:100px;		//不给高度，不能垂直居中
+}
+
+（5）绝对定位，tanslate拉回自身的一半。（不定宽、高）translate  IE8不兼容
+//margin 的百分比值是以父元素的宽度作为解析基准的
+//translate是以自身为基准的
+main {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+}
+
+（6）display:table,display:table-cell(不建议谁用，会破坏网页布局)
+.parent{
+  display:table;
+}
+.child{
+  display:table-cell;
+  vetical-align:middle;
+}
