@@ -1,0 +1,35 @@
+创建全局变量会导致一些问题
+（1）命名冲突
+（2）维护不方便，修改某处，会影响其他引用的位置
+
+避免全局变量的方法
+1、命名空间，通过全局对象的单一属性表示的功能性分组
+YUI就是按照命名空间的思路来管理其一袋米的。Y.DOM下所有方法都是和DOM操作相关的，Y.Event下的所有方法都是和时间相关的。
+var domHandle = {
+  append: function(parent, children) {
+    if (children.length === undefined) {
+      children = [children]
+    }
+    for (let i = 0; i < children.length; i++) {
+      parent.appendChild(children[i])
+    }
+    return parent
+  },
+  create: function(html, children) {
+    var template = document.createElement('template')
+    template.innerHTML = html.trim()
+    let node = template.content.firstChild
+    if (children) {
+      dom.append(node, children)
+    }
+    return node
+  }
+}
+
+2、零全局变量 （IIFE封装）
+(function(win){
+  var doc = win.document;
+  // your code
+}(window))
+
+jquery中多种这种方式
