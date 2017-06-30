@@ -1,0 +1,20 @@
+【变量以名词作为前缀，函数以动词作为前缀】，且遵守驼峰命名法
+
+// 变量
+var count = 10;
+var myName = "kerryFu";
+
+// 定义变量的不规范写法,导致变量看起来像函数
+var getCount = 10;
+var setName = "kerryFu";
+
+// 函数
+function getName(){
+  return myName;
+}
+// 函数不规范写法，看起来像变量
+function theName(){
+  return myName;
+}
+
+函数、方法命名均以动词为前缀
