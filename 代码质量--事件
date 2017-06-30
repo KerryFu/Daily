@@ -1,0 +1,29 @@
+// 如用户点击触发弹层的场景
+
+// 不好的写法，将<点击行为>与<显示弹层>的应用逻辑写在一块，可能其他行为也会触发<显示弹层>
+function handleClick(event){
+  var popUp = document.getElementById('popUp');
+  popUp.style.left = event.clientX + 'px';
+  popUp.style.top = event.clientY + 'px';
+  popUp.className = 'reveal';
+}
+addEventListener(element,'click',handleClick);
+
+
+// 解耦后的写法，将用户行为与具体应用逻辑解耦，增强复用性。
+var myApplication = {
+  handleClick:function(event){
+    this.showPopUp(event);
+  },
+  showPopUp:function(){
+    var popUp = document.getElementById('popUp');
+    popUp.style.left = event.clientX + 'px';
+    popUp.style.top = event.clientY + 'px';
+    popUp.className = 'reveal';
+  }
+};
+addEventListenner(element,'click',function(event){
+  myApplication.handleClick(event);
+});
+
+myApplication.handleClick()方法只做一件事，即调用MyApplication.showPopUp(),而myApplication.showPopUP()包含了所有的应用逻辑。
