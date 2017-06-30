@@ -17,4 +17,6 @@ function theName(){
   return myName;
 }
 
-函数、方法命名均以动词为前缀
+函数、方法命名均以动词为前缀，但是对于构造函数，首字母要大写
+普通函数遵循 小驼峰命名（camel case）
+构造函数 大驼峰命名（pascal case）
