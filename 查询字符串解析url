@@ -1,5 +1,6 @@
 // 查询字符串方法（https://m.jyall.com/goods/?city=bj&kind=jd）
 
+// 1、split拆分法
 function getQueryStringArgs() {
   var qs = location.search.length > 0 ? location.search.substring(1) : '';
   // 保存数据的对象
@@ -23,3 +24,12 @@ function getQueryStringArgs() {
 var args = getQueryStringArgs();
 console.log(args['city']);   // bj
 console.log(args['kind']);   // jd
+
+
+// 2、正则法
+var getQueryString = function(name){
+  var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)","i");  //构造一个含有目标参数的正则表达式对象   /(^|&)city=([^&]*)(&|$)/i
+  var r = window.location.search.substr(1).match(reg);     // 匹配目标参数 ["city=bj&", "", "bj", "&", index: 0, input: "city=bj&kind=jd"]
+  if (r != null) return unescape(r[2]);return null;        // 返回参数值  （unescape() 函数可对通过 escape() 编码的字符串进行解码）
+}
+console.log(getQueryString('city'));  // bj
