@@ -1,0 +1,37 @@
+/*
+* 每个方法接收2个参数，运行的函数和运行该函数的作用域对象,传入这些方法的值会接收3个参数，数组项的值、该项在数组中的位置和数组本身
+* every   对数组中每一项都运行给定函数，如果每一项都返回true，则返回true
+* some    ... 如果有 一项 返回true，则返回true
+* filter  ... 会返回true的项组成的数组
+* map     ... 返回每次调用结果组成的数组
+* forEach ... 该方法无返回值
+*/
+
+// every(每一项) some(某一项)
+var numbers = [1,2,3,4,5,3,2,4];
+var everyResult = numbers.every(function(item,index){
+  return (item > 2)
+})
+console.log(everyResult)   // false
+
+var someResult = numbers.some(function(item,index){
+  return (item > 2)
+})
+console.log(someResult)   // true
+
+// filter
+var filterResult = numbers.filter(function(item,index){
+  return (item > 2)
+})
+console.log(filterResult)  // [3,4,5,3,4]
+
+// map 和 forEach
+var mapResult = numbers.map(function(item,index){
+  return item *2
+})
+console.log(mapResult)   // [2, 4, 6, 8, 10, 6, 4, 8]
+
+var forEach = numbers.forEach(function(item,index){
+  // your code to handle the numbers
+})
+// forEach无返回值
