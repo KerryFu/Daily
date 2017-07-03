@@ -1,0 +1,15 @@
+/*
+*   局部变量会在函数执行完后自动解除引用，
+*   全局变量需要将其设置为null来释放其引用
+*/ 
+
+function createPerson(name){
+  var localPerson = new Object();
+  localPerson.name = name;
+  return localPerson;
+}
+
+var globalPerson = createPerson('kerryFu');
+
+// 解除引用,让值脱离执行环境，方便垃圾回收器在下次运行时将其回收 
+globalPerson = null;
