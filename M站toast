@@ -1,0 +1,31 @@
+// css
+.my-toast{
+  display:none;
+  margin-top:3.8rem;
+  height:1rem;
+  padding:0 .8rem;
+  background:rgba(0,0,0,.8);
+  border-radius:.1rem;
+  font-size:.32rem;
+  line-height:1rem;
+  color:#fff;
+  white-space:nowrap;
+  position:fixed;
+  left:50%;
+  top:0;
+  transform:translate(-50%,0);
+  z-index: 200;
+}
+
+// dom
+<div class="my-toast"></div>
+
+// js
+var timer = "";
+function toast(str){
+  $(".my-toast").text(str).fadeIn(400);
+  timer = setTimeout(function(){
+    $(".my-toast").fadeOut(400);
+    clearTimeout(timer)
+  },2000)
+}
