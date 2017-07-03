@@ -1,0 +1,34 @@
+// 框架
+// 通过IIFE，防止污染全局变量
+var Zepto = (function(){     
+  var $;
+  ........code........
+  zepto.init = function(selector, context){
+    var dom;
+    // 分情况对dom赋值
+    // 1、selector为空
+    // 2、selector为字符串，又分几种情况
+    // 3、selector是函数
+    // 4、其他情况，如selector是对象、数组
+    return Zepto.Z(dom, selector)
+  }
+  
+  function Z(dom, selector) {
+    var i, len = dom ? dom.length : 0
+      for (i = 0; i < len; i++) this[i] = dom[i]
+      this.length = len
+      this.selector = selector || ''
+  }
+  zepto.Z = function(dom, selector) {
+    return new Z(dom, selector)
+  }
+  
+  $ = function(selector, context){
+    return zepto.init(selector, context)
+  }
+  ........code......
+  return $;     // 将返回的$赋值给Zepto对象
+})()
+
+window.Zepto = Zepto
+window.$ === undefined && (window.$ = Zepto)
