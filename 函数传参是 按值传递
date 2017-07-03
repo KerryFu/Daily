@@ -1,0 +1,23 @@
+// 传递基本类型
+function addTen(num){
+  num +=10;
+  return num;
+}
+var count = 20;
+var reseult = addTen(count);
+console.log(count)    // 20   如果是按引用传递，此处应该是30
+console.log(result)   // 30
+
+// 传递对象
+function setName(obj){
+  obj.name = 'kerrFu';
+  obj = new Object();
+  obj.name = 'fuKerry';
+}
+var person = new Object();
+setName(person);
+console.log(person.name);   // 'kerryFu'
+
+把person传递给obj后，设置name属性为kerryFu，又将一个新创建的对象赋给obj，name属性为fuKerry.
+即使在函数内部修改了参数的值，但原始的引用仍然保持未变。实际上，当在函数内部重写 obj 时，这
+个变量引用的就是一个局部对象了。而这个局部对象会在函数执行完毕后立即被销毁。
