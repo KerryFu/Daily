@@ -1,0 +1,11 @@
+// 实现数组累加功能，接收2个参数，每一项上要调用的函数和作为归并基础的初始值（可选）
+
+var numbers = [1,2,3,4,5];
+var reduceResult = numbers.reduce(function(pre,cur,index,array){
+  return pre + cur
+})
+
+// 第一次执行回调，pre是1，cur是2，第2次执行回调pre是3，cur是3，第3次执行回调pre是6，cur是4，第4次执行回调pre是10，cur是5
+console.loeg(reduceResult)   // 15
+
+ 
