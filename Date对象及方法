@@ -1,0 +1,20 @@
+var now = new Date();         // 1970年1月1日 零时以来的毫秒数
+
+var time = now.getTime()      // 返回日期中的毫秒数
+var year = now.getFullYear()  // 4位数的年份
+var month = now.getMonth();   // 月份      （!!!!  0-11,0表示1月，11表示12月）
+var date = now.getDate();     // 月份中天数 （1-31）
+var day = now.getDay();       // 星期几 (0表示周日，6表示星期六)
+var hour = now.getHours();     // 日期中的小时数 (0-23)
+var minute = now.getMinutes(); // 日期中的分钟数 (0-59)
+var second = now.getSeconds(); // 日期中的秒数  (0-59)
+
+console.log(time) // 1499135356948
+console.log(now)  // Tue Jul 04 2017 10:23:33 GMT+0800 (中国标准时间)
+console.log(year) // 2017
+console.log(month) // 6
+console.log(date)  // 4
+console.log(day)  //2
+console.log(hour)
+console.log(minute)
+console.log(second)
