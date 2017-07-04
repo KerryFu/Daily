@@ -1,0 +1,32 @@
+/* call和apply用途都是在特定的作用域中调用函数
+*  call(context,num1,num2...)
+*  apply(context,[num1,num2,...])
+**/ 
+
+// 绑定作用域并传参
+function sum(num1,num2){
+  return num1 + num2
+}
+function getSum(num1,num2){
+  // return sum.call(this,num1,num2)
+  return sum.apply(this,[num1,num2])
+}
+alert(getSum(10,10))     // 20
+
+
+// 扩充函数运行的作用域
+window.color = 'red';
+var dom = {
+  color:'blue'
+}
+function getColor(){
+  alert(this.color)
+}
+
+getColor.call(window)    // red
+getColor.call(dom)       // blue
+getColor.apply(window)   // red
+getColor.apply(dom)      // blue
+// bind方法会创建一个函数的实例，其this值会被绑定到传给bind函数的值
+var objectSayColor = getColor.bind(dom);
+objectSayColor();   //blue
