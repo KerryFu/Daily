@@ -23,3 +23,21 @@
 };
 
 b.caller 表示谁在调用b函数，返回a函数
+
+
+// callee的使用 阶层函数
+function factorial(num){
+  if(num <=1){
+    return 1;
+  }else{
+    return num*factorial(num-1)
+  }
+}
+// 这个函数的执行与函数名factorial耦合在一起，使用arguments.callee解耦
+function factorial(num){
+  if(num <=1){
+    return 1;
+  }else{
+    return num*arguments.callee(num-1)
+  }
+}
