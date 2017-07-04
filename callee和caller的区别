@@ -1,0 +1,25 @@
+/*
+* 函数内部有一个类数组对象arguments，保存传入函数的所有参数
+* arguments拥有callee属性，【指向拥有这个arguments对象的函数】
+*/ 
+
+// callee：指向正在执行的函数
+// caller：指向调用当前函数的函数
+
+(function b(){
+     alert(arguments.callee);
+ })();
+ 返回function b(){
+      alert(arguments.callee)
+    }
+ 
+ 
+ 
+ (function a(){
+      b();
+ })();
+ function b(){ 
+      alert(b.caller);
+};
+
+b.caller 表示谁在调用b函数，返回a函数
