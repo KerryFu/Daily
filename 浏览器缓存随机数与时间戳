@@ -1,0 +1,3 @@
+通过在url后加随机数或时间戳来避免浏览器缓存
+url + '?time=' + Math.random()
+url + '?time=' + new Date().getTime()
