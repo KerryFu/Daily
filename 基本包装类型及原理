@@ -1,0 +1,31 @@
+// Bollean、Number、String与引用类型相似，也具备其各自基本类型的行为
+
+// demo1，str为基本类型，为什么可以调用substr方法？
+var str = 'hello kerryFu';
+var str2 = str.substr(2)
+console.log(str2)     // 'llo kerryFu'
+
+/* 实际过程原理：
+*  创建String类型的一个实例
+*  实例调用substr方法
+*  实例销毁
+*/ 
+var str = new String('hello kerryFu');
+var str2 = str.substr(2);
+str = null;
+
+/* 为什么String的实例可以调用substr方法
+*  原型链查找,str上没有substr方法，会通过 __proto__ 查找String.prototype上是否有，
+*  如果String.prototype上没有substr方法，则会通过 __proto__ 查找Object.prototype上是否有 
+*  原型链查找的终点是 【Object.prototype】
+*/ 
+console.log(str.__proto__ === String.prototype)                   // true
+console.log(String.prototype.__proto__ === Object.prototype)      // true
+
+
+// 自动创建的基本类型的包装类型对象，只存在于瞬间，因此【不能再运行时给基本类型添加属性和方法】
+var str = 'hello kerryFu';
+str.color = 'blue';
+alert(str.color)     // undefined
+
+
