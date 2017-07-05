@@ -1,0 +1,58 @@
+/*
+*  1、当一个函数用()调用时，this指向window
+*  2、当一个函数用对象方法调用的时候，this指向这个对象
+*  3、当一个函数绑定给html元素的事件时，this指向这个html元素
+*  4、当一个函数用定时器调用的时候，this指向window
+*  5、当一个函数用call、apply、bind调用时，this指向 指定的作用域
+*  6、当一个函数用new调用时，this指向 隐秘创建的对象
+*/ 
+
+// demo1 
+function getName(){
+  console.log(this)
+}
+getName()          // window
+
+
+// demo2 对象的方法
+var dom = {
+  sayName:function(){
+    console.log(this === dom)         
+  } 
+}
+dom.sayName()     // true
+
+
+// demo3  绑定给dom事件
+btn.onclick = function(){
+  console.log(this)          // btn
+}
+
+// demo4  setInterval、setTimeout调用
+setInterval(function(){
+  console.log(this)         // window
+},1000)
+
+
+// demo5  call、apply、bind调用
+var name = 'global kerryFu'
+var obj = {
+  name:'kerryFu'
+}
+function getName(){
+  alert(this.name)
+}
+getName.call(obj);    // kerryFu
+
+// demo6 new调用
+function Person(name,age,sex){
+  this.name = name,
+  this.age = age,
+  this.sex = sex,
+  this.sayName = new Function('console.log(this)')
+}
+var person1 = new Person('xiaoming');
+var person2 = new Person('xiaohong');
+person1.sayName();    // Person {name: "xiaoming", age: undefined, sex: undefined}
+person2.sayName()     // Person {name: "xiaohong", age: undefined, sex: undefined}
+console.log(person1.sayName === person2.sayName)   // false （this指针不一样，2条作用域链）
