@@ -5,8 +5,10 @@
 * splice(2,1,'red','green') 删除当前位置为2的项，然后在此处插入red,green
 */ 
 
-// arrayObject.splice(index,howmany,item1,.....,itemX) 添加/删除项目
-/* index 开始添加或删除的位置,（包含index）
+
+/*  
+*  arrayObject.splice(index,howmany,item1,.....,itemX) 添加/删除项目
+*  index 开始添加或删除的位置,（包含index）
 *  howmany 要删除的项目数量。如果设置为 0，则不会删除项目
 *  item1,...itemX  向数组添加的新项目
 */ 
