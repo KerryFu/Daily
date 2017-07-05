@@ -1,0 +1,43 @@
+/* Object.defineProperty()接收3个参数
+*  param1  属性所在的对象
+*  param2  属性的名字
+*  param3  一个描述符对象，
+*/ 
+
+// 1数据属性 描述对象包括configurable（能否通过delete删除）、enumerable（是否可通过for-in循环遍历到）、writable（是否可修改）、value（此属性的数据值）
+var person = {};
+Object.defineProperty(person,'name',{
+  writable:false,
+  value:'kerryFu'
+})
+console.log(person.name)    // 'kerryFu'
+person.name = 'me';
+console.log(person.name)    //  'kerryFu' （因设置writable:false,故不可修改）    
+
+Object.defineProperty(person,'name',{
+  configurable:false,
+  value:'kerryFu'
+})
+delete person.name;
+console.log(person.name)    // 'kerryFu' (不可删除)
+######且设置configurable:false后，不能再对同一个属性设置configurable:true，否则会报错
+
+// 2访问属性 描述对象包括configurable(能否通过delete删除)、enumerable(是否可通过for-in循环遍历到)、get(读取属性时调用的函数)、set(设置属性时调用函数)
+var book = {
+  __year:2017,
+  edition:1
+}
+Object.defineProperty(book,'year',{
+  get:function(){
+    return this.__year
+  },
+  set:function(newValue){
+    if(newValue>2017){
+      this.__year = newValue;
+      this.edition += newValue - 2017
+    }
+  }
+})
+book.year = 2020;
+alert(book.edition)   // 4
+
