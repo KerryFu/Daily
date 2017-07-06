@@ -56,3 +56,28 @@ var person2 = new Person('xiaohong');
 person1.sayName();    // Person {name: "xiaoming", age: undefined, sex: undefined}
 person2.sayName()     // Person {name: "xiaohong", age: undefined, sex: undefined}
 console.log(person1.sayName === person2.sayName)   // false （this指针不一样，2条作用域链）
+
+// demo7 闭包中的this（对比demo2）
+var name = 'the window';
+var object = {
+  name:'kerryFu',
+  getName:function(){
+    return function(){
+      return this.name
+    }
+  }
+} 
+// 当做对象方法调用，this指向这个对象object，但是匿名函数的执行环境具有全局性window，随闭包编写形式不一样，this会有变化
+console.log(object.getName()())   // 'the window'
+
+// demo7解决 备份this
+var object = {
+  name:'kerryFu',
+  getName:function(){
+    var that = this;
+    return function(){
+      return that.name
+    }
+  }
+}
+console.log(object.getName()())   // 'kerryFu'
