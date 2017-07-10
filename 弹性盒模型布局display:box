@@ -1,0 +1,43 @@
+​<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>弹性盒模型布局</title>
+</head>
+<style type="text/css">
+    *{margin: 0;padding: 0;}
+    .container{
+        display:-webkit-box;
+    }
+    .left{
+        width:300px;
+        background: red;
+        height:100px;
+    }
+
+    .middle{ 
+        -webkit-box-flex:1;
+        background: blue;
+        height:100px;
+    }
+    .right{
+        width:200px;
+        background: green;
+        height:100px;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="left">left</div>
+    <div class="middle">middle</div>
+    <div class="right">right</div>
+</div>
+</body>
+</html>
+
+/*
+* 实现两边固定，中间自适应同圣杯布局和双飞翼布局 
+* 父元素设置          display:-webkit-box;
+* 子元素设置所占的份数  -webkit-box-flex:1
+/ 
