@@ -60,3 +60,14 @@ transform: translate(-50%, -50%);
   display:table-cell;
   vetical-align:middle;
 }
+
+（6）flex布局，父元素设置display:flex和height，子元素div自动居中
+.vertical-container {
+  height: 300px;                 // 必须
+  display: -webkit-flex;
+  display:         flex;         // 必须
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
