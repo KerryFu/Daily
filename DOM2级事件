@@ -1,0 +1,89 @@
+/*
+* dom.addEventListener(eventtype,fn,bollean)
+* eventtype表示事件名
+* fn 表示事件处理程序的函数
+* 布尔值，true表示捕获阶段，false表示冒泡阶段
+*
+* 可以对一个元素绑定多个事件，按顺序发生，IE是按相反顺序
+**/
+
+
+var Util = {
+  addHandler:function(element,type,handler){
+    if(element.addEventListener){
+      element.addEventListener(type,handler,false)
+    }else if(element.attachEvent){
+      element.attachEvent("on" + type,handler)  // ie
+    }else{
+      element["on" + type] = handler    //  dom0
+    }
+  },
+  removeHandler:function(element,type,handler){
+    if(element.removeEventListener){
+      element.removeEventListener(type,handler,false)
+    }else if(element.datchEvent){
+      element.datchEvent("on" + type,handler)
+    }else{
+      element["on" + type] = handler
+    }
+  }
+}
+
+*****************************demo
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+	<style type="text/css">
+		#box1{
+			width: 400px;
+			height: 400px;
+			background-color: yellowgreen;
+		}
+		#box2{
+			width: 300px;
+			height: 300px;
+			background-color: pink;
+		}
+		#box3{
+			width: 200px;
+			height: 200px;
+			background-color: gold;
+		}
+	</style>
+</head>
+<body>
+	<div id="box1">
+		<div id="box2">
+			<div id="box3">
+				
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		var box1 = document.getElementById("box1");
+		var box2 = document.getElementById("box2");
+		var box3 = document.getElementById("box3");
+ 		
+ 		box2.addEventListener("click", function(){
+ 			alert(1);
+ 		}, true);
+
+ 		box1.onclick = function(){
+ 			alert(2);
+ 		}
+
+ 		box2.addEventListener("click",function(){
+ 			alert(3);
+ 		},false);
+
+ 		// 顺序 1 3 2
+	</script>
+</body>
+</html>
+  
+  
