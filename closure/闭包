@@ -1,0 +1,83 @@
+		//闭包：有权访问另一个函数作用域中变量的函数
+    
+    // demo1 闭包的第1种形式
+		function outer(){
+			var a = 333;
+			function inner(){
+				console.log(a);
+			}
+			return inner;	//outer返回了inner的引用
+		}
+
+		var inn = outer();	//inn就是inner函数了
+		inn();			//  333   执行inn，全局作用域下没有a的定义，但是inner函数作用域链中包含outer()的作用域
+    
+    // demo2 闭包的另一种形式
+    var inner;
+		function outer(){
+			var a = 250;
+			var b = 430;
+			//全局变量inner此时改变为了一个函数
+			//这个函数此时将立即生成闭包。记忆住了此时所处的环境，a是250
+			inner = function(){
+				alert(a);
+				alert(b);
+			}
+		}
+
+		outer(); //运行inner的条件是先运行下outer，然后inner函数覆盖全局的，可以访问了【outer不执行，inner就是未定义，所以需要先outer(),再inner()】
+		var a = 300;      
+		var b = 100;
+		inner();	//250 430  闭包会访问其定义时的作用域，而不是那个全局的作用域
+    
+    // demo3
+    function outer(x){
+			function inner(y){
+				console.log(x + y);
+			}
+			return inner;
+		}
+
+		//拿到了inner函数，inn就是inner函数
+		var inn = outer(3);
+		inn(5);     //8
+		inn(7);     //10
+		inn(11);    //14
+		inn(12);    //15
+    
+    
+    // demo3
+    function fun1(m,n){
+			function fun2(m){
+				alert(m + n);
+			}
+			return fun2;
+		}
+
+		var f = fun1(3,4);
+		f(6);   //  10
+    
+    //  demo4
+    		function outer(){
+			var count = 0;
+			function inner(){
+				count++;
+				console.log(count);
+			}
+			return inner;
+		}
+
+		var inn1 = outer();	
+		var inn2 = outer(); //两个变量引用的是同一个inner函数
+							          //实际上两个引用变量中，都是全新闭包，这是两条作用域链
+
+
+		inn1();	//1
+		inn1();	//2
+		inn1(); //3
+		inn1(); //4
+		inn2(); //1
+		inn2(); //2
+		inn1(); //5
+		inn1(); //6
+		inn1(); //7
