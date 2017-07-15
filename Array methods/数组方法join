@@ -9,3 +9,14 @@
 		var arr = [,,,,,,,,,];
 		var str = arr.join("我爱你");
 		console.log(str); // 我爱你我爱你我爱你我爱你我爱你我爱你我爱你我爱你
+
+
+// split和join互为反义
+// 字符串"i come from beijing",输出"beijing from come i"
+		
+		var str = "i come from beijing";
+		var arr = str.split(" ");    // 【split()中传空格，就是把字符串中空格生成数组中对应的逗号】
+		arr = arr.reverse();        
+		str = arr.join(" ");          // 【join()中传空格，就是把数组中逗号生成字符串中对应空格】
+
+		alert(str);
