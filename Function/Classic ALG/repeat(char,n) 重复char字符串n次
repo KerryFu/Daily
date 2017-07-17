@@ -1,0 +1,38 @@
+/*
+* 编写函数repeat(char,n) 实现重复char字符串n次
+* 比如repeat("★",6) 返回"★★★★★★"
+***/
+
+function repeat(char,n){
+  var str = ''
+  for(var i = 1 ; i <= n ; i++){
+    str = str.concat(char) 
+  }
+  return str
+}
+console.log(repeat("★",6))
+
+/*
+* '二分法' '1248因数法' 
+* 循环：
+*    如果n是奇数，那么str要加上char；如果n是偶数，str不变。
+*    n = parseInt(n / 2);    //n越除越小
+*    char = char + char;		//每次循环，char都要倍增。
+*循环直到n为1截止。
+**/
+function repeat(char,n){
+  var str = '';
+  while(true){
+    if(n % 2 == 1){
+      str +=char
+    }
+    if(n == 1 || n == 0){
+      break;
+    }
+    n = parseInt(n / 2);
+    char = char + char;
+  }
+  return str;
+}
+
+// repeat("★",13);二分法需要循环4次，for循环需要13次，
