@@ -1,0 +1,30 @@
+/*
+* 编写函数searchMax(char) 返回字符串char中最长的连续重复字母
+* 比如searchMax("mmmiijjjjkkkkkkssptr") 返回"kkkkkk"
+*
+**/
+
+
+// 双指针法，a，b两个指针
+function searchMax(char){
+  var a = 0;
+  var b = 1;
+  var maxLength = 0;
+  var maxLetter = '';
+  while(a != char.length - 1){
+    if(char.charAt(b) == char.charAt(a)){
+      // a,b相同,b指针右移
+      b++;
+    }else{
+    //a,b不相同
+      if(b-a >= maxLength){
+        maxLength = b - a;
+        maxLetter = char.charAt(a);
+      }
+      a++;
+      b = a+1;
+    }
+  }
+  return maxLetter;
+}
+console.log(searchMax("mmmiijjjjkkkkkkssptr"));
