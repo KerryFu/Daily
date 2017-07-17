@@ -1,0 +1,22 @@
+/*
+* 有10个学生的成绩存在数组中，请统计大于等于平均成绩的人数。
+* var scoreArr = [6,45,23,56,76,89,34,23,65,23];
+*
+******/
+
+function largerTheAverage(arr){
+  var average = 0;
+  var count = 0;
+  var sum = 0;
+  for(var i = 0; i<arr.length ; i++){
+    sum += arr[i]
+  }
+  average = sum / arr.length;
+  for(var i = 0 ; i<arr.length; i++){
+    if(arr[i] > average){
+      count++;
+    }
+  }
+  return count;
+}
+console.log(largerTheAverage([6,45,23,56,76,89,34,23,65,23]))    // 5
