@@ -1,0 +1,55 @@
+// 函数内部的特殊对象，用于保存参数
+
+// arguments涵盖了所有实参，
+function fun(a,b){
+	alert(arguments[3]);		//34
+}
+fun(45,436,457,34,23,12);
+
+// demo2，修改arguments中的值，会同步到形参
+function fun(a,b){
+	arguments[0] = 8;   //改变了第一个参数的值
+	alert(a);		//8  ，弹出改变后的值
+}
+fun(45,436,457,34,23,12);
+
+
+// （☆）arguments的功能，是模拟函数的重载，使得同一个函数，根据参数个数的不同，有不同的作用。
+/*
+* 如设计一个函数，如果传1个参数，则返回这个数字+1，如果传2个参数，则返回这两个数字的和  
+* sum(1)    // 1
+* sum(2,3)  // 5
+*/ 
+
+function sum(a,b){
+  if(arguments.length == 1){
+    return ++a;
+  }else if(arguments.length == 2){
+    return a+b;
+  }
+}
+
+/*
+*  写函数，如传1个参数，则检查是否是偶数，如传2个参数，则判断奇偶性是否相同
+* check(4)    // true
+* check(3,5)  // true
+*/
+function check(a,b){
+  if(arguments.length == 1){
+    return a % 2 == 0
+  }else if(arguments.length == 2){
+    return (a + b) % 2 == 0
+  }
+}
+
+// arguments.callee指向拥有这个arguments对象的函数
+function factorial(num){
+  if(num <=1){
+    return 1
+  }else{
+   // 等价于 return num * arguments.callee(num - 1)
+   return num * factorial(num - 1)
+  }
+  
+  
+}
