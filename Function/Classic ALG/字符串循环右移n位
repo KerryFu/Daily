@@ -1,0 +1,23 @@
+/*
+* 编写函数rightMove(char,n) 实现字符串char循环右移n位。
+* 比如rightMove("abcdefg",2) 返回"fgabcde"
+*
+**/ 
+
+//方式1，转为数组，pop数组最后一项，插入到第1项
+function rightMove(char,n){
+  var arr = char.split('');
+  for(var i = 1; i <= n ; i++){
+    arr.unshift(arr.pop())
+  }
+  return arr.join('')
+}
+console.log(rightMove("abcdefg",2))
+
+// 方式2 substr截取两段，重新拼接
+function rightMove(char,n){
+  n = n % char.length;
+  if(n == 0) return char;
+  return char.substr(-n) + char.substr(0,char.length - n)
+}
+
