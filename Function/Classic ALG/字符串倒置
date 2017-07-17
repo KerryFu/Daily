@@ -1,0 +1,23 @@
+/*
+*  编写函数rev(char) 实现将字符串char倒置
+*  比如rev("spring") 返回"gnirps"
+*/
+
+// split---reverse---join
+function rev(char){
+  var arr = char.split('');     //用''生成,
+  arr.reverse();
+  return arr.join('');      // 用,生成''
+}
+console.log(rev('spring'))
+
+
+// charAt获取字符串指定位置的字符(不需要转为数组，就可以获取字符串中的每一个字符)
+function rev(char){
+  var str = '';
+  for(var i = char.length - 1 ; i >= 0 ; i--){
+    str += char.charAt(i);
+  }
+  return str;
+}
+console.log(rev('spring'))
