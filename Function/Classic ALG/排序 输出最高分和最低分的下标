@@ -1,0 +1,27 @@
+/*
+* 有10个学生的成绩存在数组中，请统计最高分，最低分，并将最高分和最低分学生的下标输出到控制台
+* var scoreArr = [6,45,23,56,76,89,34,23,65,23]
+*/
+
+function handleIndex(arr){
+  // 最高分0，最低分100
+  var max = 0;
+  var min = 100;
+  // 最高分、最低分下标
+  var maxindex = 0;
+  var minindex = 0;
+  for(var i = 0; i<arr.length ; i++){
+    if(arr[i] > max){
+      //当前项大于max，当前项就成为max
+      max = arr[i];
+      maxindex = i;
+    }
+    if(arr[i] < min){
+      min = arr[i];
+      minindex = i;
+    }
+  }
+  console.log("最大数" + max, "最小数" + min,"最大数下标" + maxindex,"最小数下标" + minindex);
+}
+
+handleIndex(scoreArr)    // 最大数89 最小数6 最大数下标5 最小数下标0
