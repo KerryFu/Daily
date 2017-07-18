@@ -6,7 +6,7 @@ var str2 = str.substr(2)
 console.log(str2)     // 'llo kerryFu'
 
 /* 实际过程原理：
-*  创建String类型的一个实例
+*  创建一个临时对象，即实例
 *  实例调用substr方法
 *  实例销毁
 */ 
