@@ -1,0 +1,11 @@
+// 任意javascript值都可以转换为布尔值，
+
+// 转换后为false的6个，0和NaN都是number类型
+false
+0
+NaN
+''
+null
+undefined
+
+// （☆）只有6个可转为false，其他所有值，包括所有对象（数组）都会转为true
