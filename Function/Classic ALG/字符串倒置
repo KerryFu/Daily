@@ -33,3 +33,19 @@ function rev(char){
   return arr.join(' ');      // 用,生成' '空格
 }
 console.log(rev("i come from beijing"))
+
+
+/*
+* 字符串倒置第2种形式，只倒置word，not sentence
+*/ "Welcome to this Javascript Guide!"  ==>  "emocleW ot siht tpircsavaJ !ediuG"
+
+var string = "Welcome to this Javascript Guide!";
+function reverseOnlyWord(){
+  var arr = string.split(' ');
+  var re = [];
+  // Guide! Javascript this to Welcome
+  for(var i = 0 ; i<arr.length ; i++){
+    re.push(arr[i].split('').reverse().join(''));
+  }
+  return re.join(' ')
+}
