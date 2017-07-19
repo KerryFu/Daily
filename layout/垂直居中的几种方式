@@ -61,7 +61,7 @@ transform: translate(-50%, -50%);
   vetical-align:middle;
 }
 
-（6）flex布局，父元素设置display:flex和height，子元素div自动居中
+（7）flex布局，父元素设置display:flex和height，子元素div自动居中
 .vertical-container {
   height: 300px;                 // 必须
   display: -webkit-flex;
@@ -70,4 +70,12 @@ transform: translate(-50%, -50%);
           align-items: center;
   -webkit-justify-content: center;
           justify-content: center;
+}
+
+// 不定高度  padding: 10px 0 就可以垂直居中
+// 定高度 display:flex;align-items:center就可以居中
+.parent{
+  height: 100px;
+  display: flex;    
+  align-items: center;   // 弹性盒子元素在该行的侧轴（纵轴）上居中放置
 }
