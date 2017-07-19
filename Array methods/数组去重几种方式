@@ -24,6 +24,20 @@
     }
 console.log(newArr1);
 
+// indexOf() ie6-8不存在，所以可以根据需求封装
+var indexOf = [].indexOf ?
+    function(arr, item) {
+      return arr.indexOf(item)
+    } :
+    function indexOf(arr, item) {
+      for (var i = 0; i < arr.length; i++) {
+        if (arr[i] === item) {
+          return i
+        }
+      }
+      return -1
+    }
+
 // 方式4
     var arr3 = [1,2,2,3,3,3,4,4,4,4];
     //定义一个新数组,用来存储结果
@@ -41,3 +55,31 @@ console.log(newArr1);
         }
     }
     console.log(newArr3);
+
+
+/*
+* 方式5（方式4适用不好）
+* 使用obj的键值来 模拟 indexOf，obj的键key必须为字符串
+* typeOf(1) + 1  // 'number1'
+* typeOf('1') + '1'  // 'string1'  来区分数组中元素 1和'1'
+* obj[key] 不等于1，item加入数组，然后置为1
+*
+**/ 
+
+var array = [1, 2, 3, 5, 1, 5, 9, 1, 2, '1', 8];
+
+function unique(arr){
+  var re = [];
+  var obj = {};
+  for(var i = 0; i<arr.length ; i++){
+    var item = arr[i];
+    var key = typeof(item) + item;
+    console.log(key);
+    if(obj[key] !== 1){
+      re.push(item);
+      obj[key] = 1;
+    }
+  }
+  return re;
+}
+console.log(unique(array));   // [1, 2, 3, 5, 9, "1", 8]
