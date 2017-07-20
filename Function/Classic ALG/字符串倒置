@@ -22,6 +22,14 @@ function rev(char){
 }
 console.log(rev('spring'))
 
+// 方式3  （类似2）
+function rev(char){
+  var str = '';
+  for(var i = char.length - 1 ; i >= 0 ; i--){
+    str += char[i];
+  }
+  return str
+}
 
 /*
 * 编写函数rev(char) 实现将字符串char倒置
