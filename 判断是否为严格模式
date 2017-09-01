@@ -1,0 +1,9 @@
+// 非严格模式下，调用上下文(this)为全局对象，而严格模式下是undefined
+var strict = (function(){
+	return !this;
+})()
+
+console.log(strict)     // false;
+
+
+// 如果增加"use strict"，则结果为true

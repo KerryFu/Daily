@@ -1,0 +1,14 @@
+// Trim
+String.prototype.Trim = function(){
+  return this.replace(/(^\s*)|(\s*$)/g, '')
+}
+
+// TrimLeft
+String.prototype.TrimLeft = function(){
+  return this.replace(/(^\s*)/g, '')
+}
+
+// TrimRight
+String.prototype.TrimRight = function(){
+  return this.replace(/(\s*$)/g, '')
+}

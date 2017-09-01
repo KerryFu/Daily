@@ -1,0 +1,23 @@
+ //demo1  连接两个数组并去重
+var arr1 = [2,3,4,6,9,1];
+var arr2 = [3,0,34,56,2,9];
+function arrayUnique(array) {
+  var a = array.concat();
+  for(var i=0; i<a.length; ++i) {
+    for(var j=i+1; j<a.length; ++j) {
+      if(a[i] === a[j])
+        a.splice(j--, 1);
+      }
+    }
+  return a;
+};
+
+// demo2  arr1中的元素在arr2中不存在，就push到arr2中
+var arr1 = [2,3,4,6,9,1];
+var arr2 = [3,0,34,56,2,9];
+arr1.filter(function(item){
+  if(arr2.indexOf(item) === -1){
+    arr2.push(item)
+  }
+});
+console.log(arr2)

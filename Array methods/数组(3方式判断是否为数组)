@@ -1,0 +1,16 @@
+var arr = [];
+
+// demo1 instanceof适用于只有一个全局作用域，当有多个框架时，多个全局环境时，可能存在问题
+if(arr instanceof Array){
+  console.log(222)
+}
+
+// demo2  Array.isArray()  兼容IE9+
+if(Array.isArray(arr)){
+  console.log(111)
+}
+
+// demo3 toString '[object Array]'
+function isArray(arr){
+  return Object.prototype.toString.call(arr) === '[object Array]'
+}

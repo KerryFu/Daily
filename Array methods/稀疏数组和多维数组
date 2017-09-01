@@ -1,0 +1,12 @@
+// 稀疏数组就是包含从0开始的不连续索引的数组
+// length 大于元素的个数
+var arr = new Array(5)    // 数组没有元素，但是arr.length 为5
+var arr = [];
+arr[1000] = 0;            // 赋值添加1个元素，但是设置length为1001
+
+
+// 直接在数组中省略值不会创建稀疏数组，省略的元素是存在的，为undefined
+var arr1 = [,,,]         // [undefined,undefined,undefined]
+var arr2 = new Array(5)  // 没有元素
+0 in arr1                //  true 索引为0有元素
+0 in arr2                //  false 索引为0没有元素

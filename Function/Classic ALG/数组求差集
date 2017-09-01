@@ -1,0 +1,9 @@
+
+var arr1 = [2,3,4,6,9,1];
+var arr2 = [3,0,34,56,2,9];
+Array.prototype.diff = function(arr) {
+  return this.filter(function(item) {
+    return a.indexOf(item) < 0;
+  });
+};
+arr2.diff(arr1)   // [0, 34, 56]

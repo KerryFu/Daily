@@ -1,0 +1,50 @@
+// 类式继承
+function Father(){
+  this.state = ['daddy','mom']
+}
+function Son(){
+  // 用call或apply把Father构造函数绑定到Son上，让Son具有Parent的属性
+  // 只是继承了Father的构造函数，并没有得到Father.prototype上定义的方法
+  Father.call(this);
+}
+var xiaoming = new Son();
+console.log(xiaoming.state);     //  ['daddy']
+
+
+// 原型继承
+function Father(){
+  this.state = ['daddy','mom']
+}
+function Son(){
+  this.props = 'son'
+}
+Son.prototype = new Father();
+var xiaoming = new Son();
+console.log(xiaoming.state)     // ["daddy", "mom"]
+
+
+// class extends继承 
+class Father{
+  constructor(){
+    this.state = ['daddy','mom']
+  }
+  toString(){
+    return this.state[0] + this.state[1]
+  }
+}
+class Son extends Father{
+  constructor(){
+    super();
+    this.props = 'son'
+  }
+  description(){
+    return this.props + super.toString();
+  }
+}
+var xiaoming = new Son();
+console.log(xiaoming.description());     // sondaddymom
+ 
+function extends(){
+  
+}
+

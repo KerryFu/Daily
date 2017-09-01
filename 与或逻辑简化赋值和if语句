@@ -1,0 +1,53 @@
+// && 遇见false停, ||遇见true停 
+
+
+/*
+* demo1 与或用于简化赋值
+* &&左往右依次判断，当当前值为true时则继续，为false时则返回此值（返回未转换为布尔时的原值）
+* ||左往右依次判断，当当前值为false时则继续，为true时则返回此值（返回未转换为布尔时的原值）
+*
+**/ 
+
+var attr = true && 4 && 'aaa'     // 'aaa'
+var attr = true && 0 && 'aaa'     // 0
+
+var attr = 100 || 12;              // 100
+var attr = 'e' || 'hahaha'         // 'e'
+var attr = '' || 'hahaha'          // 'hahaha'
+
+
+
+/*
+* demo2 用于条件执行语句
+* && 遇见false停
+* || 遇见true停
+****/ 
+
+if(test){
+  isTrue();
+}
+// 等价于 (test && isTrue() );
+
+
+var test = false;
+if(!test){
+  isFalse();
+}
+// 等价于 (test || isFalse())
+
+
+// demo3 用于多次判断后的赋值
+var add_leval = 0;
+if(add_step == 5){
+  add_level = 1;
+}else if(add_step == 10){
+  add_level = 2;
+}else if(add_step == 15){
+  add_level = 3;
+}else if(add_step == 20){
+  add_level = 4;
+}else{
+  add_level = 0;
+}
+
+var add_level = (add_step == 5 && 1) || (add_step == 10 && 2) || (add_step == 15 && 3) || (add_step == 20 && 4) || 0;

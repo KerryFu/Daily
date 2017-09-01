@@ -1,0 +1,20 @@
+// '2017-8-2 19:10:20'
+function addZero(num){
+  return num < 10 ? '0' + num : num;
+}
+
+function formatTime(){
+  var date = new Date();
+  var year = date.getFullYear();
+  var month = date.getMonth();
+  // getDate()对应日期，getDay()对应周几
+  var day = date.getDate();
+  var hour = date.getHours();
+  var minutes = date.getMinutes();
+  var seconds = date.getSeconds();
+  var str = year + '-' + addZero(month) + '-' + addZero(day) + ' ' + addZero(hour) + ':' + addZero(minutes) + ':' + addZero(seconds);
+  return str;
+}
+
+// 动态显示，每秒刷新一次
+window.setInterval(formatTime, 1000)

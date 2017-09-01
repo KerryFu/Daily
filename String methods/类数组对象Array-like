@@ -1,0 +1,19 @@
+// 判断类数组对象
+function isArrayLike(obj){
+  if(obj&&typeof obj === 'object'
+    &&isInfinite(obj.length)       // length 有限长度
+    &&obj.length > 0                
+    &&obj.length === Math.floor(obj.length)  // length 为整数
+    &&obj.length < 4294967296)               // 小于2^32
+    return true;
+  else 
+    return false;
+}
+
+// 类数组转为数组
+var a = {"0":"a","1":"b","2":"c",length:3};
+
+console.log(Array.prototype.join.call(a,"+"))  // a+b+c
+
+// 类数组相当于 数组加上索引、length等属性，所以slice转为真正数组
+console.log(Array.prototype.slice.call(a, 0));  // 真正数组的副本 ["a","b","c"]

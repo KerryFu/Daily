@@ -1,0 +1,30 @@
+// 实时快速响应文件更改，多端同步
+// 安装
+npm install -g browser-sync
+
+
+// 启用，
+
+// Static sites 比如监听当前目录下所有文件
+browser-sync start --server --file "**/*.*"
+
+// Dynamic sites
+browser-sync start --proxy "myproject.dev" --files "css/*.css"
+
+
+// 方式2 通过gulp和browserSync配置
+$ npm install browser-sync gulp --save-dev
+
+
+// gulpfile.js
+var gulp = require('gulp');
+var browserSync = require('browser-sync').create();
+
+// Static server
+gulp.task('browser-sync', function() {
+    browserSync.init({
+        server: {
+            baseDir: "./"
+        }
+    });
+});

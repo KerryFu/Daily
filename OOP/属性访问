@@ -1,0 +1,15 @@
+
+book.subtitle = undefined;
+var len = book.subtitle.length      // 类型错误，因为null和undefined都没有属性
+
+
+// 避免属性访问报错
+var len = undefined;
+if(book){
+	if(book.subtitle){
+    len = book.subtitle.length;
+  }
+}
+
+// 简洁写法
+var len = book && book.subtitle && book.subtitle.length;

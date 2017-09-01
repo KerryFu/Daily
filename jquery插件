@@ -1,0 +1,49 @@
+/* 
+* demo1 封装对象方法的插件
+* 将对象方法封装起来，对选择器获取的jquery对象操作
+* 如parent()/appendTo方法
+*/ 
+
+// 开发color插件,方法挂载到prototype上， jquery.color.js
+;(function($){
+	$.fn.extend({
+    "color": function(value){
+      if(value == undefined){
+        return this.css('color');
+      }else{
+        return this.css('color', value);
+      }
+    },
+    "border": function(value){
+      // code
+    },
+    "background": function(value){
+      // code
+    }
+  })
+})(Jquery)
+
+
+
+// demo2 封装全局函数的插件，即工具函数
+;(function($){
+  $.extend({
+    ltrim: function(text){
+      return (text || '').replace(/^\s+/g, '')
+    },
+    rtrim: function(text){
+      return (text || '').replace(/\s+$/g, '');
+    }
+  })
+})(window)
+
+
+// demo3 自定义选择器插件
+;(function($){
+  $.extend($.expr[':'], {
+    between: function(a, i ,m){
+      var temp = m[3].split(',');
+      return temp[0]-0 < i && i < temp[1] - 0;
+    }
+  })
+})(window)

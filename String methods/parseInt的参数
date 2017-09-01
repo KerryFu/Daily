@@ -1,0 +1,31 @@
+["1"， "2"， "3"].map(parseInt)     // [1,NaN,NaN];
+
+/*
+* array.map(callback); callback自动传入3个参数
+* currentValue 当前被传递的元素
+* index 当前被传递元素的索引
+* array 调用map方法的数组
+* 返回值：对每个传入callback的数组元素进行处理后，返回的值组成一个新的数组。
+****/ 
+
+
+
+/* 
+* parseInt(string, radix)
+* string 要被解析的值
+* radix 转换所采用的基数，2到36之间
+*  没有指定基数/基数为0时，按十进制解析
+*  基数为1或大于36时：解析结果为NaN
+*
+****/
+
+["1"， "2"， "3"].map(parseInt)
+// 等价于
+parseInt("1", 0, ["1", "2", "3"])
+parseInt("2", 1, ["1", "2", "3"])
+parseInt("3", 2, ["1", "2", "3"])
+//  parseInt方法接收两个参数。第三个参数["1", "2", "3"]将被忽略等价于
+parseInt("1", 0)    // 1
+parseInt("2", 1)    // NaN
+parseInt("3", 2)    // NaN
+

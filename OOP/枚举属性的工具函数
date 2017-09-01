@@ -1,0 +1,36 @@
+//demo1 把p中可枚举的属性复制到obj中
+function extend(obj,p){
+  for(prop in p){
+    obj[prop] = p[prop]   
+  }
+  return obj;
+}
+
+
+// demo2 把p中可枚举的属性复制到obj中，如果obj中有同名属性，不受影响
+function merage(obj,p){
+  for(prop in p){
+    if(obj.hasOwnProperty[prop]) continue;
+    obj[prop] = p[prop]
+  }
+}
+
+
+/*
+* demo3 如果obj中的属性在p中没有同名属性，则从obj中删除这个属性
+* obj成为p的子集
+**/ 
+function restrict(obj,p){
+  for(prop in obj){
+    if(!p[prop]) delete o[prop]
+  }
+}
+
+// demo4 如果obj助攻属性在p中有同名属性，则从o中删除
+function substract(obj,p){
+  for(prop in p){
+    delete obj[prop]
+  }
+}
+
+

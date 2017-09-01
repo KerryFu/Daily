@@ -1,0 +1,16 @@
+/*
+* 检测一个对象是否是另一个对象的原型(或处于原型链中)
+* 如果对象 A 存在于对象obj的原形链中，则 A.isPrototypeOf(obj)返回true，而obj必定继承了A的属性。
+**/ 
+var p = {x:1};
+var o = Object.create(p);
+p.isPrototypeOf(o)    // true o继承自p
+Object.prototype.isPrototypeOf(o)   // true o继承自p，p继承自Object.prototype
+
+
+// instanceof 如果obj对象是构造函数Fun的一个实例，则 obj instanceof Fun 返回 true，
+function People(num){
+  this.money = num || 10
+}
+var kerryFu = new People(20);   
+kerrFu instanceof People    // true

@@ -1,0 +1,6 @@
+
+var arr1 = [2,3,4,6,9,1];
+var arr2 = [3,0,34,56,2,9];
+arr1.filter(function(item) {
+  return arr2.indexOf(item) > -1
+});

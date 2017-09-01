@@ -1,0 +1,44 @@
+// 生成当前时间，格式如 "2017-07-21 15:07:34"
+
+// less then 10 to add the 0 predix前缀
+function addZero(num){
+  if(num < 10){
+    return '0' + num
+  }else{
+    return num
+  }
+}
+
+function getCurrentDate(){
+  var date = new Date();
+  var year = addZero(date.getFullYear());
+  var month = addZero(date.getMonth() + 1);
+  var day = addZero(date.getDate());
+  var hour = addZero(date.getHours());
+  var minutes = addZero(date.getMinutes());
+  var seconds = addZero(date.getSeconds());
+  var str = year + '-' + month + '-' + day + ' ' + hour + ':' + minutes + ':' + seconds;
+  return str;
+}
+
+// demo2   OOP to realize
+function GetCurrentDate(){
+  this.date = new Date(),  
+  this.addZero = function(num){
+    if(num < 10){
+      return '0' + num;
+    }else{
+      return num;
+    }
+  },
+  this.year = this.addZero(this.date.getFullYear()),
+  this.month = this.addZero(this.date.getMonth() + 1),
+  this.day = this.addZero(this.date.getDate()),
+  this.hour = this.addZero(this.date.getHours()),
+  this.minutes = this.addZero(this.date.getMinutes()),
+  this.seconds = this.addZero(this.date.getSeconds()),
+  this.str = this.year + '-' + this.month + '-' + this.day + ' ' + this.hour + ':' + this.minutes + ':' + this.seconds
+}
+
+var now = new GetCurrentDate();
+console.log(now.str);   //  2017-07-21 15:19:17
