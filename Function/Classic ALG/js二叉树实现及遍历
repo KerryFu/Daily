@@ -1,0 +1,165 @@
+  function BinaryTree(){
+    var Node = function(key){   // node表示这个节点
+      this.key = key;     // 节点的数值key
+      this.left = null;  // 节点的左箭头
+      this.right = null;  // 节点的右箭头
+    }
+
+    // 定义根节点
+    var root = null;
+
+    // 开始挂载
+    this.insert = function(key){
+      var newNode = new Node(key)
+      // 如果没有根节点，就把这个挂上
+      if(root === null){
+        root = newNode;
+      } else{
+        insertNode(root, newNode);
+      }
+    }
+
+    var insertNode = function(node, newNode){
+      if(newNode.key < node.key){
+        if(node.left === null){
+          node.left = newNode;
+        }else{
+          //如果有左节点，则继续跟这个左节点的左节点比较
+          insertNode(node.left, newNode);
+        }
+      }else{
+        if(node.right === null){
+          node.right = newNode;
+        }else{
+          insertNode(node.right, newNode);
+        }
+      }
+    }
+
+    // 中序遍历接口
+    this.inOrderTraverse = function(callback){
+      inOrderTraverseNode(root, callback);   // root是第一个节点 8
+    }
+    // 中序遍历实现
+    var inOrderTraverseNode = function(node, callback){
+      if(node !== null){
+        // 递归调用    
+        inOrderTraverseNode(node.left, callback);  //先访问左子树 3
+        callback(node.key);     // 访问当前节点
+        inOrderTraverseNode(node.right, callback);  // 访问右子节点 10
+      }
+    }
+
+    // 前序遍历接口
+    this.preOrderTraverse = function(callback){
+      preOrderTraverseNode(root, callback);
+    }
+    // 前序遍历实现
+    var preOrderTraverseNode = function(node, callback){
+      if(node !== null){
+        // 递归调用  
+        callback(node.key);     // 访问当前节点
+        preOrderTraverseNode(node.left, callback);  //先访问左子树 3
+        preOrderTraverseNode(node.right, callback);  // 访问右子节点 10
+      }
+    }
+
+    // 后序遍历接口
+    this.postOrderTraverse = function(callback){
+      postOrderTraverseNode(root, callback);
+    }
+    // 后序遍历实现
+    var postOrderTraverseNode = function(node, callback){
+      if(node !== null){
+        // 递归调用  
+        postOrderTraverseNode(node.left, callback);  //先访问左子树 
+        postOrderTraverseNode(node.right, callback);  // 访问右子节点 
+        callback(node.key);     // 访问当前节点
+      }
+    }
+
+    // 二叉树的查找  找最小值
+    var minNode = function(node){
+      if(node){
+        while(node && node.left !== null){
+          node = node.left;   // 如果有左子节点，则继续查找左子节点
+        }
+        return node.key;       // 当没有左子节点了，就是我们找的最小值
+      }
+      return null;
+    }
+    this.min = function(){
+      return minNode(root)
+    }
+
+    // 二叉树查找 最大值
+    var maxNode = function(node){
+      if(node){
+        while(node && node.right !== null){
+          node = node.right;
+        }
+        return node.key;
+      }
+      return null;
+    }
+
+    this.max = function(){
+      return maxNode(root);
+    }
+
+    // 查找
+    var searchNode = function(node, key){
+      if(node === null){
+        return false;
+      }
+      if(key < node.key){
+        return searchNode(node.left, key);
+      }else if(key > node.key){
+        return searchNode(node.right, key);
+      }else{
+        return true;
+      }
+    }
+    this.search = function(key){
+      return searchNode(root, key);
+    }
+
+  }
+
+var node_arr = [8, 3, 10, 1, 6, 14, 4, 7, 13];
+var binaryTree = new BinaryTree();
+
+// 插入创建二叉树
+node_arr.forEach(function(key){
+  binaryTree.insert(key)
+})
+
+
+// 实现中序遍历   实现从小到大排序
+binaryTree.inOrderTraverse(function(key){      //function(key){console.log(key)是callback
+  console.log(key)  // 1 3 4 6 7 8 10 13 14
+});
+
+// 前序遍历  复制二叉树
+binaryTree.preOrderTraverse(function(key){ 
+  console.log(key)  // 8 3 1 6 4 7 10 14 13
+});
+
+// 后序遍历
+binaryTree.postOrderTraverse(function(key){ 
+  console.log(key)  // 1 4 7 6 3 13 14 10 8
+});
+
+// 查找最小值
+console.log(binaryTree.min());   // 1
+// 查找最大值
+console.log(binaryTree.max());   // 14
+// 查找某个值
+console.log(binaryTree.search(7));  // true
+console.log(binaryTree.search(9));  // false
+
+// 构建BinaryTree构造函数，Node是实例属性，insert方法是接口，insertNode是inset接口实现
+
+// （1）中序遍历（LDR），首先遍历左子树，然后访问根结点，最后遍历右子树。简记左-根-右
+// （2）前序遍历（DLR），首先访问根结点，然后遍历左子树，最后遍历右子树。简记根-左-右
+// （3）后序遍历（LRD），首先遍历左子树，然后遍历右子树，最后访问根结点。简记左-右-根
