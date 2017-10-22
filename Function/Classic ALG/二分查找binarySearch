@@ -1,0 +1,44 @@
+/*
+* 二分查找的前提为：（1）数组 （2）有序,正序或倒序都ok
+* 原理： 二分查找的基本思想是将n个元素分成大致相等的两部分，去a[n/2]与x做比较，如果x<a[n/2],则只要在数组a的左半部分继续搜索x,如果x>a[n/2],则只要在数组a的右半部搜索x，如果x=a[n/2],则找到x,算法中止；
+*
+*
+* 时间复杂度  O(logn)  就是while循环的次数！
+* 比如：总共有n个元素，每次查找的区间大小就是n，n/2，n/4，…，n/2^k（每次循环需要查找的元素个数），其中k就是循环的次数。 
+* 由于n/2^k取整后>=1，即令n/2^k=1，可得k=log2n,（是以2为底，n的对数），所以时间复杂度可以表示O()=O(logn)
+*
+*/
+
+function binarySearch(arr, target) {    // binary二进制的，二元的
+    let start = 0;
+    let end = arr.length - 1;
+    let m = Math.floor((start + end) / 2);   // 次数m是3，下面需要动态修改m的值
+    let sortTag = arr[start] <= arr[end];   //false为倒序， true为正序
+    console.log(sortTag);
+
+    while (start < end && arr[m] !== target) {
+        if (arr[m] > target) {
+            sortTag && (end = m - 1);
+            !sortTag && (start = m + 1);
+        } else {
+            sortTag && (start = m + 1);
+            !sortTag && (end = m - 1);
+        }
+        // 动态修改m的值
+        m = Math.floor((start + end) / 2);
+    }
+
+    if (arr[m] == target) {
+        console.log('找到了,位置%s', m);
+        return m;
+    } else {
+        console.log('没找到');
+        return -1;
+    }
+}
+
+let arr = [0, 1, 2, 4, 5, 6, 7, 8];
+let arr2 = [88, 77, 66, 55, 44, 33, 22, 11];
+
+binarySearch(arr2, 77);      // 找到了,位置1
+binarySearch(arr, 2);        // 找到了，位置2
