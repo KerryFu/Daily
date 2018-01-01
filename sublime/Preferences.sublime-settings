@@ -1,0 +1,14 @@
+{
+	"color_scheme": "Packages/User/SublimeLinter/Monokai (SL).tmTheme",
+	"font_size": 15,
+	"ignored_packages":
+	[
+    // 不进入vim模式
+		"Vintage",
+    // 忽略php的包
+    "PHP"
+	],
+  // tab缩进2格
+	"tab_size": 2,
+	"translate_tabs_to_spaces": true
+}
